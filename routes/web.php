@@ -50,6 +50,14 @@ Route::middleware(['auth'])->group(function () {
 Route::prefix('prototype')->group(function () {
     Route::get('homepage', function () {
         return view('prototype.homepage');
-    });
+    })->name('homepage');
+
+    Route::get('kaos', function () {
+        return view('prototype.kaos');
+    })->name('kaos');
+
+    Route::get('detail', function () {
+        return view('prototype.detail');
+    })->name('detail');
 });
 

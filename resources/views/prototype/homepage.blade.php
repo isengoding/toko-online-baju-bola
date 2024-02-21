@@ -77,8 +77,8 @@
                                 </div>
                             </div>
                             <div class="mt-5 d-flex justify-content-center text-center">
-                                <a href="https://tabler-icons.io" class="btn btn-primary w-25" target="_blank"
-                                    rel="noopener">SHOP NOW</a>
+                                <a href="{{ route('kaos') }}" class="btn btn-primary w-25" rel="noopener">Belanja
+                                    Sekarang</a>
                             </div>
                             <div class="mt-5 d-flex justify-content-center text-center">
                                 {{-- @for ($i = 0; $i < 4; $i++) --}}
@@ -192,7 +192,7 @@
                                     style="background-image: url({{ asset('dist/img/products/acmilan.jpg') }})"></span> --}}
                                 <div>
                                     <div>
-                                        <a href="" class="text-reset">Ac Milan season 23-34</a>
+                                        <a href="{{ route('detail') }}" class="text-reset">Ac Milan season 23-34</a>
                                     </div>
                                     <div class="text-secondary">Rp. 230.000</div>
                                 </div>
