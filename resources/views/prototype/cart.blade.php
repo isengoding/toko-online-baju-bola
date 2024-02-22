@@ -95,7 +95,8 @@
                                         <div>Rp. 2.000.000</div>
                                     </div>
                                     <div class="d-grid mt-4">
-                                        <button class="btn btn-primary btn-block">Lanjutkan Pembayaran</button>
+                                        <a href="{{ route('checkout') }}" class="btn btn-primary btn-block">Lanjutkan
+                                            Pembayaran</a>
                                     </div>
 
                                 </div>
