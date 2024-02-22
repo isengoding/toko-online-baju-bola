@@ -15,6 +15,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Dashboard - Tabler - Premium and Open Source dashboard template with responsive and high quality UI.</title>
     <!-- CSS files -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
     <link href="{{ asset('dist/css/tabler.min.css') }}" rel="stylesheet" />
 
     <link href="{{ asset('dist/css/demo.min.css') }}" rel="stylesheet" />
@@ -27,6 +28,7 @@
 
         body {
             font-feature-settings: "cv03", "cv04", "cv11";
+            font-family: "Segoe UI", sans-serif;
         }
     </style>
 </head>
@@ -116,9 +118,10 @@
                                         class="link-secondary" rel="noopener">
                                         <!-- Download SVG icon from http://tabler-icons.io/i/heart -->
                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="icon text-pink icon-filled icon-inline" width="24" height="24"
-                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            class="icon text-pink icon-filled icon-inline" width="24"
+                                            height="24" viewBox="0 0 24 24" stroke-width="2"
+                                            stroke="currentColor" fill="none" stroke-linecap="round"
+                                            stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                             <path
                                                 d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />

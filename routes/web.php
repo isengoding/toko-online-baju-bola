@@ -59,5 +59,9 @@ Route::prefix('prototype')->group(function () {
     Route::get('detail', function () {
         return view('prototype.detail');
     })->name('detail');
+
+    Route::get('cart', function () {
+        return view('prototype.cart');
+    })->name('cart');
 });
 
