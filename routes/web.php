@@ -32,12 +32,32 @@ Route::get('/guest', function () {
 Route::post('upload', [ImageController::class, 'upload'])->name('images.upload');
 Route::delete('revert', [ImageController::class, 'revert'])->name('images.revert');
 
+// Admin Route
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('admin.dashboard');
+});
+
+// User Route
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
+
+// Guest Route
+Route::get('/', function () {
+    return view('prototype.homepage');
+})->name('home');
+
+
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    // Route::get('/', function () {
+    //     return view('dashboard');
+    // })->name('dashboard');
 
     Route::resource('images', ImageController::class);
 
