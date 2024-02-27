@@ -37,10 +37,12 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'name' => 'required',
             'image' => 'nullable|image|max:2048',
         ]);
+
 
         if (!empty($request->image)) {
             $image = $request->file('image');
