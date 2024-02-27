@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\DashboardController;
 
@@ -39,6 +40,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
     Route::resource('brands', BrandController::class);
+    Route::resource('teams', TeamController::class);
 
 });
 

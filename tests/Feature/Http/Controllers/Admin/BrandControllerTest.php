@@ -132,7 +132,7 @@ class BrandControllerTest extends TestCase
     /**
      * @test
      */
-    public function can_deletes_the_product()
+    public function can_deletes_the_brand()
     {
         $existingBrand = Brand::factory()->create([
             'name' => 'existing-brand',
