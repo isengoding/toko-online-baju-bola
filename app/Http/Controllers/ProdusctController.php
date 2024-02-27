@@ -13,7 +13,7 @@ use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
 
-class ProductController extends Controller
+class ProdusctController extends Controller
 {
     public function index()
     {

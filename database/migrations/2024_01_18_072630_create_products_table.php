@@ -13,12 +13,14 @@ return new class extends Migration {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('code')->unique();
+            $table->string('sku')->unique();
             $table->foreignId('brand_id')->constrained();
+            $table->foreignId('team_id')->constrained();
             $table->integer('price');
-            $table->integer('stock');
-            $table->string('image')->nullable()->default('avatars/default.png');
+            $table->string('type');
+            $table->string('image')->nullable()->default('default.png');
             $table->text('description')->nullable();
+            $table->longText('size_guide')->nullable();
             $table->timestamps();
         });
     }

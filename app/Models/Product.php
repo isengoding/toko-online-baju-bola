@@ -13,11 +13,13 @@ class Product extends Model
 
     protected $fillable = [
         'name',
-        'code',
+        'sku',
         'brand_id',
+        'team_id',
         'price',
-        'stock',
+        'type',
         'description',
+        'size_guide',
         'image'
     ];
 
@@ -25,25 +27,17 @@ class Product extends Model
     {
         $query->when($filters['search'] ?? null, function ($query, $search) {
             $query->where('name', 'like', '%' . $search . '%')
-                ->orWhere('code', 'like', '%' . $search . '%')
+                ->orWhere('sku', 'like', '%' . $search . '%')
                 ->orWhere('price', 'like', '%' . $search . '%')
-                ->orWhere('stock', 'like', '%' . $search . '%')
+                ->orWhere('type', 'like', '%' . $search . '%')
                 ->orWhereHas('brand', function ($query) use ($search) {
+                    $query->where('name', 'like', '%' . $search . '%');
+                })
+                ->orWhereHas('team', function ($query) use ($search) {
                     $query->where('name', 'like', '%' . $search . '%');
                 });
         });
 
-        // $query->when($filters['route_id'] ?? null, function ($query, $route_id) {
-        //     $query->where('id', $route_id);
-        // });
-
-        // $query->when($filters['transportation_id'] ?? null, function ($query, $transportation_id) {
-        //     $query->where('transportation_id', $transportation_id);
-        // });
-
-        // $query->when($filters['time_departure'] ?? null, function ($query, $time_departure) {
-        //     $query->where('time_departure', 'like', '%' . $time_departure . '%');
-        // });
     }
 
     /**
@@ -54,6 +48,16 @@ class Product extends Model
     public function brand(): BelongsTo
     {
         return $this->belongsTo(Brand::class);
+    }
+
+    /**
+     * Get the team that owns the Product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function team(): BelongsTo
+    {
+        return $this->belongsTo(Team::class);
     }
 
     protected function imageBase64(): Attribute

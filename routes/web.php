@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\DashboardController;
 
 /*
@@ -41,6 +41,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 
     Route::resource('brands', BrandController::class);
     Route::resource('teams', TeamController::class);
+    Route::resource('products', ProductController::class);
 
 });
 
@@ -66,11 +67,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('images', ImageController::class);
 
-    Route::get('/products/import/create', [ProductController::class, 'importCreate'])->name('products.import.create');
-    Route::post('/products/import', [ProductController::class, 'importStore'])->name('products.import.store');
-    Route::get('/products/excel', [ProductController::class, 'excel'])->name('products.excel');
-    Route::get('/products/pdf', [ProductController::class, 'pdf'])->name('products.pdf');
-    Route::resource('products', ProductController::class);
+    // Route::get('/products/import/create', [ProductController::class, 'importCreate'])->name('products.import.create');
+    // Route::post('/products/import', [ProductController::class, 'importStore'])->name('products.import.store');
+    // Route::get('/products/excel', [ProductController::class, 'excel'])->name('products.excel');
+    // Route::get('/products/pdf', [ProductController::class, 'pdf'])->name('products.pdf');
+    // Route::resource('products', ProductController::class);
 });
 
 
