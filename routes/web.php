@@ -15,7 +15,9 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-
+Route::get('admin', function () {
+    return 'Admin Page';
+})->middleware('auth', 'admin');
 
 Route::get('/combo', function () {
     return view('layouts.app');
