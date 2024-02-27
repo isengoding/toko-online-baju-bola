@@ -64,7 +64,7 @@ class ProductController extends Controller
 
 
 
-        $request->session()->flash('success', 'Brand created successfully');
+        $request->session()->flash('success', 'Product created successfully');
 
         return redirect()->route('products.index');
     }
