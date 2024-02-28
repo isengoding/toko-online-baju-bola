@@ -124,6 +124,16 @@
                         </span>
                     </a>
                 </li>
+                <li class="nav-item @if (request()->routeIs('stocks.*')) active @endif">
+                    <a class="nav-link" href="{{ route('stocks.index') }}">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <i class="ti ti-notebook icon"></i>
+                        </span>
+                        <span class="nav-link-title">
+                            Stock
+                        </span>
+                    </a>
+                </li>
 
                 {{-- <li class="nav-item active dropdown">
                     <a class="nav-link dropdown-toggle" href="#navbar-help" data-bs-toggle="dropdown"
