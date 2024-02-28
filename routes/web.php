@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\Admin\TeamController;
+use App\Http\Controllers\Guest\HomeController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\StockController;
 use App\Http\Controllers\Admin\ProductController;
@@ -55,9 +56,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // Guest Route
-Route::get('/', function () {
-    return view('prototype.homepage');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 

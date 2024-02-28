@@ -75,13 +75,42 @@
                                     d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
                             </svg>
                         </a>
+                        @auth
+                            <div class="nav-item dropdown ms-3">
+                                <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
+                                    aria-label="Open user menu">
+                                    <span class="avatar avatar-sm"
+                                        style="background-image: url(./static/avatars/000m.jpg)"></span>
+                                    <div class="d-none d-xl-block ps-2">
+                                        <div>{{ auth()->user()->name }}</div>
+                                        <div class="mt-1 small text-secondary">{{ auth()->user()->email }}</div>
+                                    </div>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                    @can('admin')
+                                    @endcan
+                                    <a href="{{ route('admin.dashboard') }}" class="dropdown-item">Dashboard</a>
+                                    <a href="./profile.html" class="dropdown-item">Profile</a>
+                                    <a href="./settings.html" class="dropdown-item">Settings</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        style="display: none;">
+                                        @csrf
+                                    </form>
+                                    <a href="#" class="dropdown-item"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
+                                </div>
+                            </div>
+                        @else
+                            <a href="{{ route('register') }}" class="nav-link px-3 ">
+                                Register
+                            </a>
+                            <a href="{{ route('login') }}" class="nav-link px-3">
+                                Login
+                            </a>
 
-                        <a href="{{ route('register') }}" class="nav-link px-3 ">
-                            Register
-                        </a>
-                        <a href="{{ route('login') }}" class="nav-link px-3">
-                            Login
-                        </a>
+                        @endauth
 
                     </div>
 
@@ -109,10 +138,11 @@
                             <ul class="list-inline list-inline-dots mb-0">
                                 <li class="list-inline-item"><a href="https://tabler.io/docs" target="_blank"
                                         class="link-secondary" rel="noopener">Documentation</a></li>
-                                <li class="list-inline-item"><a href="./license.html" class="link-secondary">License</a>
+                                <li class="list-inline-item"><a href="./license.html"
+                                        class="link-secondary">License</a>
                                 </li>
-                                <li class="list-inline-item"><a href="https://github.com/tabler/tabler" target="_blank"
-                                        class="link-secondary" rel="noopener">Source code</a></li>
+                                <li class="list-inline-item"><a href="https://github.com/tabler/tabler"
+                                        target="_blank" class="link-secondary" rel="noopener">Source code</a></li>
                                 <li class="list-inline-item">
                                     <a href="https://github.com/sponsors/codecalm" target="_blank"
                                         class="link-secondary" rel="noopener">
