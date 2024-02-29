@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Guest\HomeController;
 use App\Http\Controllers\Admin\BrandController;
@@ -54,6 +55,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('user.checkout.index');
 
 });
 

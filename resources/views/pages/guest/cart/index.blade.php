@@ -113,7 +113,8 @@
                                         <div>Rp. {{ number_format(Cart::session(100)->getTotal()) }}</div>
                                     </div>
                                     <div class="d-grid mt-4">
-                                        <a href="{{ route('checkout') }}" class="btn btn-primary btn-block">Checkout</a>
+                                        <a href="{{ route('user.checkout.index') }}"
+                                            class="btn btn-primary btn-block">Checkout</a>
                                     </div>
                                     <div class="d-grid mt-3">
                                         <a href="{{ route('guest.products.index') }}"
