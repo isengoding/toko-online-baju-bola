@@ -60,7 +60,7 @@
                                                 id="product_id" value="{{ old('product_id', $stock->product_id) }}">
                                                 <option value="">Select Brand</option>
                                                 @foreach ($products as $item)
-                                                    <option value="{{ $item->id }}" @selected(old('product_id', $item->id) == $item->id)>
+                                                    <option value="{{ $item->id }}" @selected(old('product_id', $stock->product->id) == $item->id)>
                                                         {{ $item->name }}
                                                     </option>
                                                 @endforeach

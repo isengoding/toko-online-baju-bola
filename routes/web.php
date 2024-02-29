@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Guest\HomeController;
@@ -53,10 +54,18 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
 });
 
 // Guest Route
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/products', [App\Http\Controllers\Guest\ProductController::class, 'index'])->name('guest.products.index');
+Route::get('/products/{product}', [App\Http\Controllers\Guest\ProductController::class, 'show'])->name('guest.products.show');
+
+Route::get('/cart', [CartController::class, 'index'])->name('guest.cart.index');
+Route::post('/cart/store', [CartController::class, 'store'])->name('guest.cart.store');
+Route::put('/cart/{id}', [CartController::class, 'update'])->name('guest.cart.update');
+Route::get('/cart/{id}', [CartController::class, 'destroy'])->name('guest.cart.destroy');
 
 
 

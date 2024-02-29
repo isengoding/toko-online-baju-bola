@@ -13,12 +13,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Dashboard - Tabler - Premium and Open Source dashboard template with responsive and high quality UI.</title>
+    <title>Jersey bola</title>
     <!-- CSS files -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
     <link href="{{ asset('dist/css/tabler.min.css') }}" rel="stylesheet" />
 
     <link href="{{ asset('dist/css/demo.min.css') }}" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
     <style>
         @import url('https://rsms.me/inter/inter.css');
 
@@ -52,6 +54,52 @@
                 </h1>
                 <div class="navbar-nav flex-row order-md-last">
                     <div class="d-none d-md-flex">
+                        <div class="nav-item dropdown d-none d-md-flex me-3">
+                            <a href="#" class="nav-link px-0" data-bs-toggle="dropdown" tabindex="-1"
+                                aria-label="Show notifications">
+                                <i class="ti ti-shopping-cart icon"></i>
+                                <span
+                                    class="badge rounded rounded-circle bg-primary text-white">{{ \Cart::session(100)->getContent()->count() }}</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-end dropdown-menu-card">
+                                <div class="card" style="width: 300px;">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Keranjang Belanja</h3>
+                                    </div>
+                                    @forelse (\Cart::session(100)->getContent() as $item)
+                                        <div class="list-group list-group-flush list-group-hoverable">
+
+
+                                            <div class="list-group-item d-flex flex-row align-items-center">
+                                                <div class="">
+                                                    <img src="{{ asset($item->attributes[0]['img_url']) }}"
+                                                        width="45" height="60" alt="">
+                                                </div>
+                                                <div class="text-truncate ms-3">
+                                                    <div>{{ $item->name }}</div>
+                                                    <div>Rp. {{ number_format($item->price) }} <span
+                                                            class="ms-3 text-muted">x {{ $item->quantity }}</span></div>
+                                                    <div class="text-muted">
+                                                        {{ $item->attributes[0]['type'] }} -
+                                                        {{ $item->attributes[0]['brand'] }} -
+                                                        {{ $item->attributes[0]['size'] }}
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    @empty
+                                    @endforelse
+
+
+                                    <div class="card-footer text-center">
+                                        <a href="{{ route('guest.cart.index') }}"
+                                            class="text-decoration-none stretched-link">Lihat
+                                            Keranjang</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <a href="?theme=dark" class="nav-link px-0 hide-theme-dark" title="Enable dark mode"
                             data-bs-toggle="tooltip" data-bs-placement="bottom">
                             <!-- Download SVG icon from http://tabler-icons.io/i/moon -->
@@ -87,8 +135,7 @@
                                     </div>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                    @can('admin')
-                                    @endcan
+
                                     <a href="{{ route('admin.dashboard') }}" class="dropdown-item">Dashboard</a>
                                     <a href="./profile.html" class="dropdown-item">Profile</a>
                                     <a href="./settings.html" class="dropdown-item">Settings</a>
@@ -182,10 +229,34 @@
     </div>
 
     <!-- Libs JS -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script>
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+    </script>
 
     <!-- Tabler Core -->
     <script src="{{ asset('dist/js/tabler.min.js') }}" defer></script>
     <script src="{{ asset('dist/js/demo.min.js') }}" defer></script>
+
+    @stack('custom_script')
 
 </body>
 

@@ -90,7 +90,8 @@
                                 </div>
                             </div>
                             <div class="mt-5 d-flex justify-content-center text-center">
-                                <a href="{{ route('kaos') }}" class="btn btn-primary w-25" rel="noopener">Belanja
+                                <a href="{{ route('guest.products.index') }}" class="btn btn-primary w-25"
+                                    rel="noopener">Belanja
                                     Sekarang</a>
                             </div>
                             <div class="mt-5 d-flex justify-content-center text-center">
