@@ -1,0 +1,176 @@
+{
+    "id": "65e7c696b9686e2a8ba37b86",
+    "external_id": "INV/04032024/1709539958",
+    "user_id": "6539d0a5dd3bfa07b51c5c88",
+    "status": "EXPIRED",
+    "merchant_name": "chota app",
+    "merchant_profile_picture_url": "https://du8nwjtfkinx.cloudfront.net/xendit.png",
+    "amount": 2500000,
+    "expiry_date": "2024-03-06T01:29:47.884Z",
+    "invoice_url": "https://checkout-staging.xendit.co/latest/65e7c696b9686e2a8ba37b86",
+    "available_banks": [
+        {
+            "bank_code": "MANDIRI",
+            "collection_type": "POOL",
+            "transfer_amount": 2500000,
+            "bank_branch": "Virtual Account",
+            "account_holder_name": "CHOTA APP",
+            "identity_amount": 0
+        },
+        {
+            "bank_code": "BRI",
+            "collection_type": "POOL",
+            "transfer_amount": 2500000,
+            "bank_branch": "Virtual Account",
+            "account_holder_name": "CHOTA APP",
+            "identity_amount": 0
+        },
+        {
+            "bank_code": "BNI",
+            "collection_type": "POOL",
+            "transfer_amount": 2500000,
+            "bank_branch": "Virtual Account",
+            "account_holder_name": "CHOTA APP",
+            "identity_amount": 0
+        },
+        {
+            "bank_code": "PERMATA",
+            "collection_type": "POOL",
+            "transfer_amount": 2500000,
+            "bank_branch": "Virtual Account",
+            "account_holder_name": "CHOTA APP",
+            "identity_amount": 0
+        },
+        {
+            "bank_code": "BCA",
+            "collection_type": "POOL",
+            "transfer_amount": 2500000,
+            "bank_branch": "Virtual Account",
+            "account_holder_name": "CHOTA APP",
+            "identity_amount": 0
+        },
+        {
+            "bank_code": "SAHABAT_SAMPOERNA",
+            "collection_type": "POOL",
+            "transfer_amount": 2500000,
+            "bank_branch": "Virtual Account",
+            "account_holder_name": "CHOTA APP",
+            "identity_amount": 0
+        },
+        {
+            "bank_code": "CIMB",
+            "collection_type": "POOL",
+            "transfer_amount": 2500000,
+            "bank_branch": "Virtual Account",
+            "account_holder_name": "CHOTA APP",
+            "identity_amount": 0
+        },
+        {
+            "bank_code": "BSI",
+            "collection_type": "POOL",
+            "transfer_amount": 2500000,
+            "bank_branch": "Virtual Account",
+            "account_holder_name": "CHOTA APP",
+            "identity_amount": 0
+        },
+        {
+            "bank_code": "BJB",
+            "collection_type": "POOL",
+            "transfer_amount": 2500000,
+            "bank_branch": "Virtual Account",
+            "account_holder_name": "CHOTA APP",
+            "identity_amount": 0
+        },
+        {
+            "bank_code": "BNC",
+            "collection_type": "POOL",
+            "transfer_amount": 2500000,
+            "bank_branch": "Virtual Account",
+            "account_holder_name": "CHOTA APP",
+            "identity_amount": 0
+        }
+    ],
+    "available_retail_outlets": [
+        {
+            "retail_outlet_name": "ALFAMART"
+        },
+        {
+            "retail_outlet_name": "INDOMARET"
+        }
+    ],
+    "available_ewallets": [
+        {
+            "ewallet_type": "DANA"
+        },
+        {
+            "ewallet_type": "OVO"
+        },
+        {
+            "ewallet_type": "SHOPEEPAY"
+        },
+        {
+            "ewallet_type": "NEXCASH"
+        },
+        {
+            "ewallet_type": "JENIUSPAY"
+        },
+        {
+            "ewallet_type": "LINKAJA"
+        },
+        {
+            "ewallet_type": "ASTRAPAY"
+        }
+    ],
+    "available_qr_codes": [
+        {
+            "qr_code_type": "QRIS"
+        }
+    ],
+    "available_direct_debits": [
+        {
+            "direct_debit_type": "DD_BRI"
+        },
+        {
+            "direct_debit_type": "DD_MANDIRI"
+        }
+    ],
+    "available_paylaters": [
+        {
+            "paylater_type": "KREDIVO"
+        },
+        {
+            "paylater_type": "UANGME"
+        },
+        {
+            "paylater_type": "AKULAKU"
+        },
+        {
+            "paylater_type": "ATOME"
+        }
+    ],
+    "should_exclude_credit_card": false,
+    "should_send_email": false,
+    "success_redirect_url": "localhost:8000",
+    "created": "2024-03-06T01:27:51.144Z",
+    "updated": "2024-03-06T01:29:47.885Z",
+    "currency": "IDR",
+    "items": [
+        {
+            "name": "PSG 23-24",
+            "price": 2500000,
+            "quantity": 1
+        }
+    ],
+    "customer_notification_preference": {
+        "invoice_created": [
+            "email"
+        ],
+        "invoice_reminder": [
+            "email"
+        ],
+        "invoice_expired": [],
+        "invoice_paid": [
+            "email"
+        ]
+    }
+}

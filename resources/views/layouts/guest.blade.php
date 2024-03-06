@@ -138,7 +138,7 @@
 
                                     <a href="{{ route('admin.dashboard') }}" class="dropdown-item">Dashboard</a>
                                     <a href="./profile.html" class="dropdown-item">Profile</a>
-                                    <a href="./settings.html" class="dropdown-item">Settings</a>
+                                    <a href="{{ route('user.orders.index') }}" class="dropdown-item">My Order</a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                         style="display: none;">
                                         @csrf

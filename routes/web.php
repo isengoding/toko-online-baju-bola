@@ -57,6 +57,14 @@ Route::middleware(['auth'])->group(function () {
     })->name('dashboard');
 
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('user.checkout.index');
+    Route::post('/checkout', [CheckoutController::class, 'store'])->name('user.checkout.store');
+    Route::get('/checkout/{id}', [CheckoutController::class, 'show'])->name('user.checkout.show');
+
+    Route::post('/orders', [App\Http\Controllers\User\OrderController::class, 'store'])->name('user.orders.store');
+    Route::get('/orders', [App\Http\Controllers\User\OrderController::class, 'index'])->name('user.orders.index');
+    Route::get('/orders/{order}', [App\Http\Controllers\User\OrderController::class, 'show'])->name('user.orders.show');
+    Route::get('/orders/cancel/{order}', [App\Http\Controllers\User\OrderController::class, 'cancelOrder'])->name('user.orders.cancel');
+
 
 });
 
@@ -69,6 +77,8 @@ Route::get('/cart', [CartController::class, 'index'])->name('guest.cart.index');
 Route::post('/cart/store', [CartController::class, 'store'])->name('guest.cart.store');
 Route::put('/cart/{id}', [CartController::class, 'update'])->name('guest.cart.update');
 Route::get('/cart/{id}', [CartController::class, 'destroy'])->name('guest.cart.destroy');
+
+Route::post('/webhook', [App\Http\Controllers\User\OrderController::class, 'webhook'])->name('user.orders.webhook');
 
 
 

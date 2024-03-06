@@ -100,9 +100,13 @@
                                             <a href="">Syarat dan Ketentuan Umum</a>
                                         </div>
                                     </div>
-                                    <div class="d-grid mt-4">
-                                        <button class="btn btn-primary btn-block">Selesaikan Pembelian</button>
-                                    </div>
+                                    <form action="{{ route('user.orders.store') }}" method="post">
+                                        @csrf
+                                        <div class="d-grid mt-4">
+                                            <button type="submit" class="btn btn-primary btn-block">Selesaikan
+                                                Pembelian</button>
+                                        </div>
+                                    </form>
 
                                 </div>
 
