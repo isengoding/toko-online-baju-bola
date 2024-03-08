@@ -46,15 +46,15 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <h1 class="navbar-brand d-none-navbar-horizontal pe-0 pe-md-3">
-                    <a href=".">
+                    <a href="{{ route('home') }}">
                         <img src="{{ asset('dist/img/products/new-logo.png') }}" width="110" height="32"
                             alt="Tabler" class="navbar-brand-image">
                         {{-- Laravel --}}
                     </a>
                 </h1>
                 <div class="navbar-nav flex-row order-md-last">
-                    <div class="d-none d-md-flex">
-                        <div class="nav-item dropdown d-none d-md-flex me-3">
+                    <div class="d-flex ">
+                        <div class="nav-item dropdown d-flex me-3">
                             <a href="#" class="nav-link px-0" data-bs-toggle="dropdown" tabindex="-1"
                                 aria-label="Show notifications">
                                 <i class="ti ti-shopping-cart icon"></i>
@@ -124,7 +124,7 @@
                             </svg>
                         </a>
                         @auth
-                            <div class="nav-item dropdown ms-3">
+                            <div class="nav-item dropdown d-flex ms-3">
                                 <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
                                     aria-label="Open user menu">
                                     <span class="avatar avatar-sm"
@@ -150,10 +150,10 @@
                                 </div>
                             </div>
                         @else
-                            <a href="{{ route('register') }}" class="nav-link px-3 ">
+                            <a href="{{ route('register') }}" class="nav-link px-3 d-none d-md-flex ">
                                 Register
                             </a>
-                            <a href="{{ route('login') }}" class="nav-link px-3">
+                            <a href="{{ route('login') }}" class="nav-link px-3 d-none d-md-flex">
                                 Login
                             </a>
 
@@ -165,6 +165,64 @@
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <div class="d-flex flex-column flex-md-row flex-fill align-items-stretch align-items-md-center">
                         <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('home') }}">
+                                    <span
+                                        class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+
+                                    </span>
+                                    <span class="nav-link-title">
+                                        Home
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('guest.products.index') }}">
+                                    <span
+                                        class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+
+                                    </span>
+                                    <span class="nav-link-title">
+                                        Products
+                                    </span>
+                                </a>
+                            </li>
+                            @auth
+                                <li class="nav-item d-flex d-md-none">
+                                    <a class="nav-link" href="{{ route('login') }}">
+                                        <span
+                                            class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+
+                                        </span>
+                                        <span class="nav-link-title">
+                                            Logout
+                                        </span>
+                                    </a>
+                                </li>
+                            @else
+                                <li class="nav-item d-flex d-md-none">
+                                    <a class="nav-link" href="{{ route('login') }}">
+                                        <span
+                                            class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+
+                                        </span>
+                                        <span class="nav-link-title">
+                                            Login
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item d-flex d-md-none">
+                                    <a class="nav-link" href="{{ route('register') }}">
+                                        <span
+                                            class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+
+                                        </span>
+                                        <span class="nav-link-title">
+                                            Register
+                                        </span>
+                                    </a>
+                                </li>
+                            @endauth
 
                         </ul>
                     </div>

@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\StockController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\User\DashboardController as UserDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,9 +53,11 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 
 // User Route
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    // Route::get('/dashboard', function () {
+    //     return view('dashboard');
+    // })->name('dashboard');
+
+    Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
 
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('user.checkout.index');
     Route::post('/checkout', [CheckoutController::class, 'store'])->name('user.checkout.store');

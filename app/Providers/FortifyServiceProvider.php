@@ -52,7 +52,7 @@ class FortifyServiceProvider extends ServiceProvider
                 if (auth()->user()->role == User::ROLE_ADMIN) {
                     return redirect((route('admin.dashboard')));
                 } else {
-                    return redirect((route('dashboard')));
+                    return redirect((route('user.dashboard')));
                 }
             }
         });

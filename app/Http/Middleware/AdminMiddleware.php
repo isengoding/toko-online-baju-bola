@@ -21,6 +21,6 @@ class AdminMiddleware
         }
 
         // abort(401);
-        return redirect(route('dashboard'));
+        return redirect(route('user.dashboard'));
     }
 }
