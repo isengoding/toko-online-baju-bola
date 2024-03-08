@@ -26,8 +26,8 @@
             <div class="page-body">
                 <div class="container-xl">
                     <div class="row g-5">
-                        <div class="col-7">
-                            @forelse ($carts as $item)
+                        @forelse ($carts as $item)
+                            <div class="col-7">
                                 <div class="row mt-4">
                                     <div class="col">
                                         <div class="d-flex justify-content-between">
@@ -92,40 +92,59 @@
 
                                     </div>
                                 </div>
-                            @empty
-                            @endforelse
+                            </div>
+                            <div class="col-4">
+                                <div class="card sticky-top border-0">
+                                    <div class="card-body bg-transparent">
+                                        <div class="d-flex justify-content-between text-secondary mb-1">
+                                            <div>Jumlah Pesanan</div>
+                                            <div>Rp. {{ number_format(Cart::session(100)->getTotal()) }}</div>
+                                        </div>
+                                        <div class="d-flex justify-content-between border-bottom text-secondary pb-3">
+                                            <div>Pajak</div>
+                                            <div>Rp. 0</div>
+                                        </div>
 
-                        </div>
-                        <div class="col-4">
-                            <div class="card sticky-top border-0">
-                                <div class="card-body bg-transparent">
-                                    <div class="d-flex justify-content-between text-secondary mb-1">
-                                        <div>Jumlah Pesanan</div>
-                                        <div>Rp. {{ number_format(Cart::session(100)->getTotal()) }}</div>
-                                    </div>
-                                    <div class="d-flex justify-content-between border-bottom text-secondary pb-3">
-                                        <div>Pajak</div>
-                                        <div>Rp. 0</div>
-                                    </div>
+                                        <div class="d-flex justify-content-between fw-bold mt-3">
+                                            <div>Total</div>
+                                            <div>Rp. {{ number_format(Cart::session(100)->getTotal()) }}</div>
+                                        </div>
+                                        <div class="d-grid mt-4">
+                                            <a href="{{ route('user.checkout.index') }}"
+                                                class="btn btn-primary btn-block">Checkout</a>
+                                        </div>
+                                        <div class="d-grid mt-3">
+                                            <a href="{{ route('guest.products.index') }}"
+                                                class="btn btn-secondary btn-block">Lanjut Belanja</a>
+                                        </div>
 
-                                    <div class="d-flex justify-content-between fw-bold mt-3">
-                                        <div>Total</div>
-                                        <div>Rp. {{ number_format(Cart::session(100)->getTotal()) }}</div>
-                                    </div>
-                                    <div class="d-grid mt-4">
-                                        <a href="{{ route('user.checkout.index') }}"
-                                            class="btn btn-primary btn-block">Checkout</a>
-                                    </div>
-                                    <div class="d-grid mt-3">
-                                        <a href="{{ route('guest.products.index') }}"
-                                            class="btn btn-secondary btn-block">Lanjut Belanja</a>
                                     </div>
 
                                 </div>
 
                             </div>
+                        @empty
 
-                        </div>
+                            <div class="container-tight py-4">
+                                <div class="empty">
+                                    <div class="empty-header"><img
+                                            src="./dist/static/illustrations/undraw_empty_cart_co35.svg" height="200"
+                                            class="d-block mx-auto" alt=""></div>
+                                    <p class="empty-title">Oops… Your cart still empty.</p>
+                                    {{-- <p class="empty-subtitle text-secondary">
+                                            We are sorry but the page you are looking for was not found
+                                        </p> --}}
+                                    <div class="empty-action">
+                                        <a href="{{ route('guest.products.index') }}" class="btn btn-primary">
+
+                                            See All Product
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforelse
+
+
                     </div>
                 </div>
             </div>
