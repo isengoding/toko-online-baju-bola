@@ -26,30 +26,31 @@
             <div class="page-body">
                 <div class="container-xl">
                     <div class="row g-5">
-                        <div class="col-6">
-                            <div class="row mt-4 mb-4">
-                                <div class="col">
-                                    <div class="fs-3 mb-3">Informasi Saya</div>
-                                    <div class="fw-bold">Alamat Pengiriman</div>
-                                    <div class="mb-3">
-                                        Jhon Doe <br>
-                                        Jl. Merdeka Selatan No 11
-                                        <br>
-                                        Jakarta Selatan
-                                        <br>
-                                        123456
-                                        <br>
-                                        Indonesia
+                        @forelse ($carts as $item)
+                            <div class="col-6">
+                                <div class="row mt-4 mb-4">
+                                    <div class="col">
+                                        <div class="fs-3 mb-3">Informasi Saya</div>
+                                        <div class="fw-bold">Alamat Pengiriman</div>
+                                        <div class="mb-3">
+                                            Jhon Doe <br>
+                                            Jl. Merdeka Selatan No 11
+                                            <br>
+                                            Jakarta Selatan
+                                            <br>
+                                            123456
+                                            <br>
+                                            Indonesia
+                                        </div>
+                                        <div class="fw-bold">Nomor Telepon</div>
+                                        <div class="">081999288388</div>
+
+
+
                                     </div>
-                                    <div class="fw-bold">Nomor Telepon</div>
-                                    <div class="">081999288388</div>
-
-
-
                                 </div>
-                            </div>
-                            <div class="fw-bold">Detail Pesanan</div>
-                            @forelse ($carts as $item)
+                                <div class="fw-bold">Detail Pesanan</div>
+
                                 <div class="row mt-3">
                                     <div class="col">
                                         <div class="d-flex justify-content-between">
@@ -74,45 +75,63 @@
 
                                     </div>
                                 </div>
-                            @empty
-                            @endforelse
 
-                        </div>
-                        <div class="col-4">
-                            <div class="card sticky-top border-0">
-                                <div class="card-body bg-transparent">
-                                    <div class="d-flex justify-content-between text-secondary mb-1">
-                                        <div>Jumlah Pesanan</div>
-                                        <div>Rp. {{ number_format(Cart::session(100)->getTotal()) }}</div>
-                                    </div>
-                                    <div class="d-flex justify-content-between border-bottom text-secondary pb-3">
-                                        <div>Pajak</div>
-                                        <div>Rp. 0</div>
-                                    </div>
 
-                                    <div class="d-flex justify-content-between fw-bold fs-3 mt-3">
-                                        <div>Total</div>
-                                        <div>Rp. {{ number_format(Cart::session(100)->getTotal()) }}</div>
-                                    </div>
-                                    <div class="mt-4">
-                                        <div>Dengan melanjutkan, Anda Menyetujui</div>
-                                        <div>
-                                            <a href="">Syarat dan Ketentuan Umum</a>
+                            </div>
+                            <div class="col-4">
+                                <div class="card sticky-top border-0">
+                                    <div class="card-body bg-transparent">
+                                        <div class="d-flex justify-content-between text-secondary mb-1">
+                                            <div>Jumlah Pesanan</div>
+                                            <div>Rp. {{ number_format(Cart::session(100)->getTotal()) }}</div>
                                         </div>
-                                    </div>
-                                    <form action="{{ route('user.orders.store') }}" method="post">
-                                        @csrf
-                                        <div class="d-grid mt-4">
-                                            <button type="submit" class="btn btn-primary btn-block">Selesaikan
-                                                Pembelian</button>
+                                        <div class="d-flex justify-content-between border-bottom text-secondary pb-3">
+                                            <div>Pajak</div>
+                                            <div>Rp. 0</div>
                                         </div>
-                                    </form>
+
+                                        <div class="d-flex justify-content-between fw-bold fs-3 mt-3">
+                                            <div>Total</div>
+                                            <div>Rp. {{ number_format(Cart::session(100)->getTotal()) }}</div>
+                                        </div>
+                                        <div class="mt-4">
+                                            <div>Dengan melanjutkan, Anda Menyetujui</div>
+                                            <div>
+                                                <a href="">Syarat dan Ketentuan Umum</a>
+                                            </div>
+                                        </div>
+                                        <form action="{{ route('user.orders.store') }}" method="post">
+                                            @csrf
+                                            <div class="d-grid mt-4">
+                                                <button type="submit" class="btn btn-primary btn-block">Selesaikan
+                                                    Pembelian</button>
+                                            </div>
+                                        </form>
+
+                                    </div>
 
                                 </div>
 
                             </div>
+                        @empty
+                            <div class="container-tight py-4">
+                                <div class="empty">
+                                    <div class="empty-header"><img
+                                            src="./dist/static/illustrations/undraw_add_to_cart_re_wrdo.svg" height="200"
+                                            class="d-block mx-auto" alt=""></div>
+                                    <p class="empty-title text-secondary">Add Product to Cart to Checkout</p>
+                                    {{-- <p class="empty-subtitle text-secondary">
+                                        We are sorry but the page you are looking for was not found
+                                    </p> --}}
+                                    <div class="empty-action">
+                                        <a href="{{ route('guest.products.index') }}" class="btn btn-primary">
 
-                        </div>
+                                            See All Product
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforelse
                     </div>
                 </div>
             </div>
