@@ -63,37 +63,43 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-end dropdown-menu-card">
                                 <div class="card" style="width: 300px;">
-                                    @forelse (\Cart::session(100)->getContent() as $item)
+                                    @if (\Cart::session(100)->getContent()->count() > 0)
+
                                         <div class="card-header">
                                             <h3 class="card-title">Keranjang Belanja</h3>
                                         </div>
-                                        <div class="list-group list-group-flush list-group-hoverable">
+                                        @forelse (\Cart::session(100)->getContent() as $item)
+                                            <div class="list-group list-group-flush list-group-hoverable">
 
 
-                                            <div class="list-group-item d-flex flex-row align-items-center">
-                                                <div class="">
-                                                    <img src="{{ asset($item->attributes[0]['img_url']) }}"
-                                                        width="45" height="60" alt="">
-                                                </div>
-                                                <div class="text-truncate ms-3">
-                                                    <div>{{ $item->name }}</div>
-                                                    <div>Rp. {{ number_format($item->price) }} <span
-                                                            class="ms-3 text-muted">x {{ $item->quantity }}</span></div>
-                                                    <div class="text-muted">
-                                                        {{ $item->attributes[0]['type'] }} -
-                                                        {{ $item->attributes[0]['brand'] }} -
-                                                        {{ $item->attributes[0]['size'] }}
+                                                <div class="list-group-item d-flex flex-row align-items-center">
+                                                    <div class="">
+                                                        <img src="{{ asset($item->attributes[0]['img_url']) }}"
+                                                            width="45" height="60" alt="">
+                                                    </div>
+                                                    <div class="text-truncate ms-3">
+                                                        <div>{{ $item->name }}</div>
+                                                        <div>Rp. {{ number_format($item->price) }} <span
+                                                                class="ms-3 text-muted">x {{ $item->quantity }}</span>
+                                                        </div>
+                                                        <div class="text-muted">
+                                                            {{ $item->attributes[0]['type'] }} -
+                                                            {{ $item->attributes[0]['brand'] }} -
+                                                            {{ $item->attributes[0]['size'] }}
+                                                        </div>
                                                     </div>
                                                 </div>
+
                                             </div>
 
-                                        </div>
+                                        @empty
+                                        @endforelse
                                         <div class="card-footer text-center">
                                             <a href="{{ route('guest.cart.index') }}"
                                                 class="text-decoration-none stretched-link">Lihat
                                                 Keranjang</a>
                                         </div>
-                                    @empty
+                                    @else
                                         <div class="list-group list-group-flush list-group-hoverable">
                                             <div
                                                 class="list-group-item d-flex flex-row align-items-center justify-content-center">
@@ -106,9 +112,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    @endforelse
-
-
+                                    @endif
 
                                 </div>
                             </div>

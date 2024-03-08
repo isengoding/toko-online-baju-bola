@@ -26,7 +26,7 @@
             <div class="page-body">
                 <div class="container-xl">
                     <div class="row g-5">
-                        @forelse ($carts as $item)
+                        @if ($carts->count() > 0)
                             <div class="col-6">
                                 <div class="row mt-4 mb-4">
                                     <div class="col">
@@ -50,33 +50,36 @@
                                     </div>
                                 </div>
                                 <div class="fw-bold">Detail Pesanan</div>
-
-                                <div class="row mt-3">
-                                    <div class="col">
-                                        <div class="d-flex justify-content-between">
-                                            <div class="d-flex">
-                                                <img src="{{ asset($item->attributes[0]['img_url']) }}" alt=""
-                                                    width="80" height="80">
-                                                <div class="ms-3">
-                                                    <span class="">{{ $item->name }}</span>
-                                                    <div class="">Rp. {{ number_format($item->price) }}</div>
-                                                    <div class="text-secondary fs-5">
-                                                        Type : {{ ucfirst($item->attributes[0]['type']) }},
-                                                        Size : {{ $item->attributes[0]['size'] }}
+                                @forelse ($carts as $item)
+                                    <div class="row mt-3">
+                                        <div class="col">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="d-flex">
+                                                    <img src="{{ asset($item->attributes[0]['img_url']) }}" alt=""
+                                                        width="80" height="80">
+                                                    <div class="ms-3">
+                                                        <span class="">{{ $item->name }}</span>
+                                                        <div class="">Rp. {{ number_format($item->price) }}</div>
+                                                        <div class="text-secondary fs-5">
+                                                            Type : {{ ucfirst($item->attributes[0]['type']) }},
+                                                            Size : {{ $item->attributes[0]['size'] }}
+                                                        </div>
+                                                        <div class="text-secondary fs-5">{{ $item->quantity }} pcs</div>
                                                     </div>
-                                                    <div class="text-secondary fs-5">{{ $item->quantity }} pcs</div>
+                                                </div>
+                                                <div class="text-end fw-bold">
+                                                    <div>Rp. {{ number_format($item->quantity * $item->price) }}</div>
+
                                                 </div>
                                             </div>
-                                            <div class="text-end fw-bold">
-                                                <div>Rp. {{ number_format($item->quantity * $item->price) }}</div>
 
-                                            </div>
                                         </div>
-
                                     </div>
-                                </div>
 
 
+
+                                @empty
+                                @endforelse
                             </div>
                             <div class="col-4">
                                 <div class="card sticky-top border-0">
@@ -113,7 +116,7 @@
                                 </div>
 
                             </div>
-                        @empty
+                        @else
                             <div class="container-tight py-4">
                                 <div class="empty">
                                     <div class="empty-header"><img
@@ -121,8 +124,8 @@
                                             class="d-block mx-auto" alt=""></div>
                                     <p class="empty-title text-secondary">Add Product to Cart to Checkout</p>
                                     {{-- <p class="empty-subtitle text-secondary">
-                                        We are sorry but the page you are looking for was not found
-                                    </p> --}}
+                                    We are sorry but the page you are looking for was not found
+                                </p> --}}
                                     <div class="empty-action">
                                         <a href="{{ route('guest.products.index') }}" class="btn btn-primary">
 
@@ -131,7 +134,10 @@
                                     </div>
                                 </div>
                             </div>
-                        @endforelse
+                        @endif
+
+
+
                     </div>
                 </div>
             </div>

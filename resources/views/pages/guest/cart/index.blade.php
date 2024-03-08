@@ -26,72 +26,76 @@
             <div class="page-body">
                 <div class="container-xl">
                     <div class="row g-5">
-                        @forelse ($carts as $item)
+                        @if ($carts->count() > 0)
                             <div class="col-7">
-                                <div class="row mt-4">
-                                    <div class="col">
-                                        <div class="d-flex justify-content-between">
-                                            <div class="d-flex">
-                                                <img src="{{ asset($item->attributes[0]['img_url']) }}" alt=""
-                                                    width="150">
-                                                <div class="ms-3">
-                                                    <span class="fw-bold">
-                                                        <a href="{{ route('guest.products.show', $item->id) }}"
-                                                            class="text-reset">{{ $item->name }}</a>
-                                                    </span>
-                                                    <div class="fw-bold">Rp. {{ number_format($item->price) }}</div>
-                                                    <table class="text-secondary mt-3">
-                                                        <tr>
-                                                            <td>Ukuran</td>
-                                                            <td class="px-2">:</td>
-                                                            <td>{{ $item->attributes[0]['size'] }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Tipe</td>
-                                                            <td class="px-2">:</td>
-                                                            <td>{{ $item->attributes[0]['type'] }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Total</td>
-                                                            <td class="px-2">:</td>
-                                                            <td>{{ number_format($item->quantity * $item->price) }}</td>
-                                                        </tr>
-                                                    </table>
+                                @forelse ($carts as $item)
+                                    <div class="row mt-4">
+                                        <div class="col">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="d-flex">
+                                                    <img src="{{ asset($item->attributes[0]['img_url']) }}" alt=""
+                                                        width="150">
+                                                    <div class="ms-3">
+                                                        <span class="fw-bold">
+                                                            <a href="{{ route('guest.products.show', $item->id) }}"
+                                                                class="text-reset">{{ $item->name }}</a>
+                                                        </span>
+                                                        <div class="fw-bold">Rp. {{ number_format($item->price) }}</div>
+                                                        <table class="text-secondary mt-3">
+                                                            <tr>
+                                                                <td>Ukuran</td>
+                                                                <td class="px-2">:</td>
+                                                                <td>{{ $item->attributes[0]['size'] }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Tipe</td>
+                                                                <td class="px-2">:</td>
+                                                                <td>{{ $item->attributes[0]['type'] }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Total</td>
+                                                                <td class="px-2">:</td>
+                                                                <td>{{ number_format($item->quantity * $item->price) }}</td>
+                                                            </tr>
+                                                        </table>
 
-                                                    <div class="w-50 mt-5">
-                                                        {{-- <select name="quantity" class="form-select">
+                                                        <div class="w-50 mt-5">
+                                                            {{-- <select name="quantity" class="form-select">
                                                             <option value="1">1</option>
                                                             <option value="2">2</option>
                                                             <option value="3">3</option>
                                                             <option value="4">4</option>
                                                             <option value="5">5</option>
                                                         </select> --}}
-                                                        <form action="{{ route('guest.cart.update', $item->id) }}"
-                                                            method="post">
-                                                            @csrf
-                                                            @method('PUT')
-                                                            <input type="hidden" class="form-control"
-                                                                value="{{ $item->id }}" name="id">
-                                                            <input type="number" min="1" class="form-control"
-                                                                name="quantity" value="{{ $item->quantity }}">
-                                                            <button type="submit" class="btn btn-primary mt-3 d-none">
-                                                                Update
-                                                            </button>
-                                                        </form>
+                                                            <form action="{{ route('guest.cart.update', $item->id) }}"
+                                                                method="post">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="hidden" class="form-control"
+                                                                    value="{{ $item->id }}" name="id">
+                                                                <input type="number" min="1" class="form-control"
+                                                                    name="quantity" value="{{ $item->quantity }}">
+                                                                <button type="submit" class="btn btn-primary mt-3 d-none">
+                                                                    Update
+                                                                </button>
+                                                            </form>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div>
-                                                <a href="{{ route('guest.cart.destroy', $item->id) }}"
-                                                    class="text-danger text-decoration-none text-secondary">
-                                                    <i class="ti ti-trash icon"></i>
+                                                <div>
+                                                    <a href="{{ route('guest.cart.destroy', $item->id) }}"
+                                                        class="text-danger text-decoration-none text-secondary">
+                                                        <i class="ti ti-trash icon"></i>
 
-                                                </a>
+                                                    </a>
+                                                </div>
                                             </div>
+
                                         </div>
-
                                     </div>
-                                </div>
+
+                                @empty
+                                @endforelse
                             </div>
                             <div class="col-4">
                                 <div class="card sticky-top border-0">
@@ -123,8 +127,7 @@
                                 </div>
 
                             </div>
-                        @empty
-
+                        @else
                             <div class="container-tight py-4">
                                 <div class="empty">
                                     <div class="empty-header"><img
@@ -132,8 +135,8 @@
                                             class="d-block mx-auto" alt=""></div>
                                     <p class="empty-title">Oops… Your cart still empty.</p>
                                     {{-- <p class="empty-subtitle text-secondary">
-                                            We are sorry but the page you are looking for was not found
-                                        </p> --}}
+                                We are sorry but the page you are looking for was not found
+                            </p> --}}
                                     <div class="empty-action">
                                         <a href="{{ route('guest.products.index') }}" class="btn btn-primary">
 
@@ -142,10 +145,10 @@
                                     </div>
                                 </div>
                             </div>
-                        @endforelse
-
+                        @endif
 
                     </div>
+
                 </div>
             </div>
         </div>
