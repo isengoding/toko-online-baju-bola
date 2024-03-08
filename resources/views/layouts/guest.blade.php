@@ -63,10 +63,10 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-end dropdown-menu-card">
                                 <div class="card" style="width: 300px;">
-                                    <div class="card-header">
-                                        <h3 class="card-title">Keranjang Belanja</h3>
-                                    </div>
                                     @forelse (\Cart::session(100)->getContent() as $item)
+                                        <div class="card-header">
+                                            <h3 class="card-title">Keranjang Belanja</h3>
+                                        </div>
                                         <div class="list-group list-group-flush list-group-hoverable">
 
 
@@ -88,15 +88,28 @@
                                             </div>
 
                                         </div>
+                                        <div class="card-footer text-center">
+                                            <a href="{{ route('guest.cart.index') }}"
+                                                class="text-decoration-none stretched-link">Lihat
+                                                Keranjang</a>
+                                        </div>
                                     @empty
+                                        <div class="list-group list-group-flush list-group-hoverable">
+                                            <div
+                                                class="list-group-item d-flex flex-row align-items-center justify-content-center">
+                                                <div class="text-center">
+                                                    <i class="ti ti-shopping-cart-question icon text-secondary"></i>
+
+                                                    <div class="mt-2">
+                                                        Cart Empty
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     @endforelse
 
 
-                                    <div class="card-footer text-center">
-                                        <a href="{{ route('guest.cart.index') }}"
-                                            class="text-decoration-none stretched-link">Lihat
-                                            Keranjang</a>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
