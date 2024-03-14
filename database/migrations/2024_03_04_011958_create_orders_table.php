@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('no_order');
             $table->foreignId('user_id');
+            $table->foreignId('address_id');
             $table->string('total');
             $table->string('invoice_id');
             $table->string('checkout_url');
