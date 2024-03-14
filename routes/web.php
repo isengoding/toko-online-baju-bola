@@ -70,6 +70,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/orders/cancel/{order}', [App\Http\Controllers\User\OrderController::class, 'cancelOrder'])->name('user.orders.cancel');
 
     Route::resource('addresses', AddressController::class)->names('user.addresses');
+    Route::get('/addresses/setdefault/{address}', [AddressController::class, 'setDefault'])->name('user.addresses.setdefault');
 
 
 });

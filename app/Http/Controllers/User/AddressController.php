@@ -17,6 +17,7 @@ class AddressController extends Controller
         $filter['search'] = request()->keyword;
 
         $addresses = Address::query()
+            ->where('user_id', auth()->id())
             ->filter($filter)
             ->latest()
             ->paginate(10);
@@ -37,6 +38,10 @@ class AddressController extends Controller
      */
     public function store(StoreAddressRequest $request)
     {
+        if ($request->is_default) {
+            Address::where('user_id', auth()->id())->update(['is_default' => 0]);
+        }
+
         Address::create($request->validated());
 
         $request->session()->flash('success', 'address created successfully');
@@ -65,6 +70,9 @@ class AddressController extends Controller
      */
     public function update(StoreAddressRequest $request, Address $address)
     {
+        if ($request->is_default) {
+            Address::where('user_id', auth()->id())->update(['is_default' => 0]);
+        }
 
         $address->update($request->validated());
 
@@ -81,5 +89,14 @@ class AddressController extends Controller
         $address->delete();
 
         return redirect()->route('user.addresses.index')->with('success', 'Address deleted successfully');
+    }
+
+    public function setDefault(Address $address)
+    {
+        Address::where('user_id', auth()->id())->update(['is_default' => 0]);
+
+        $address->update(['is_default' => 1]);
+
+        return redirect()->route('user.addresses.index')->with('success', 'Address set as default successfully');
     }
 }

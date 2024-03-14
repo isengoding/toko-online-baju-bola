@@ -23,6 +23,7 @@ class Address extends Model
     {
         $query->when($filters['search'] ?? null, function ($query, $search) {
             $query->where('recipient_name', 'like', '%' . $search . '%')
+                ->orWhere('label', 'like', '%' . $search . '%')
                 ->orWhere('street_address', 'like', '%' . $search . '%');
         });
     }
