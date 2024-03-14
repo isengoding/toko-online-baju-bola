@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Guest\HomeController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\StockController;
+use App\Http\Controllers\User\AddressController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
@@ -67,6 +68,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/orders', [App\Http\Controllers\User\OrderController::class, 'index'])->name('user.orders.index');
     Route::get('/orders/{order}', [App\Http\Controllers\User\OrderController::class, 'show'])->name('user.orders.show');
     Route::get('/orders/cancel/{order}', [App\Http\Controllers\User\OrderController::class, 'cancelOrder'])->name('user.orders.cancel');
+
+    Route::resource('addresses', AddressController::class)->names('user.addresses');
 
 
 });
