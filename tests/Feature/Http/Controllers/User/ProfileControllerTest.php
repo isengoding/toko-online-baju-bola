@@ -36,4 +36,23 @@ class ProfileControllerTest extends TestCase
             ->assertViewIs('pages.user.profile.edit');
     }
 
+    /**
+     * @test
+     */
+    public function can_updates_the_user_profile()
+    {
+
+        $updateProfileUser = [
+            'name' => 'test update name',
+            'email' => 'updateemail@example.com',
+        ];
+
+        $response = $this->put(route('user-profile-information.update'), $updateProfileUser);
+
+
+        $this->assertDatabaseHas('users', $updateProfileUser);
+
+        $response->assertSessionHas('success');
+    }
+
 }
