@@ -154,7 +154,7 @@
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
 
                                     <a href="{{ route('admin.dashboard') }}" class="dropdown-item">Dashboard</a>
-                                    <a href="./profile.html" class="dropdown-item">Profile</a>
+                                    <a href="{{ route('user.profile.edit') }}" class="dropdown-item">Profile</a>
                                     <a href="{{ route('user.addresses.index') }}" class="dropdown-item">Address</a>
                                     <a href="{{ route('user.orders.index') }}" class="dropdown-item">My Order</a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"

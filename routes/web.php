@@ -9,6 +9,7 @@ use App\Http\Controllers\Guest\HomeController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\StockController;
 use App\Http\Controllers\User\AddressController;
+use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
@@ -71,6 +72,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('addresses', AddressController::class)->names('user.addresses');
     Route::get('/addresses/setdefault/{address}', [AddressController::class, 'setDefault'])->name('user.addresses.setdefault');
+
+    Route::get('/profile', ProfileController::class)->name('user.profile.edit');
 
 
 });
