@@ -27,7 +27,7 @@ class StoreAddressRequest extends FormRequest
             'street_address' => 'required',
             'phone_number' => 'required',
             'notes' => 'nullable',
-            'is_default' => 'nullable',
+            'is_default' => 'nullable|sometimes',
             'user_id' => 'required',
         ];
     }

@@ -33,21 +33,18 @@
                         <div class="col-lg-7">
                             <div class="card card-lg">
                                 <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <div class="fw-bold">Alamat Pengirimian</div>
-                                            <address>
-                                                Ikan Terbang<br>
-                                                Jl. Merdeka Barat No 13<br>
-                                                Tanjungpinang Barat<br>
-                                                (belakang mesjid)<br>
-
-                                            </address>
+                                    <div class="row mb-3">
+                                        <div class="col-12">
+                                            <div class="fw-bold">Nama Penerima</div>
+                                            <div class="mb-3">{{ $order->address?->recipient_name }}</div>
+                                            <div class="fw-bold">Alamat Pengiriman</div>
+                                            <div class="mb-3 text-truncate">
+                                                {{ $order->address?->street_address }}
+                                                <br>
+                                                ({{ $order->address?->notes }})
+                                            </div>
                                             <div class="fw-bold">Nomor Telepon</div>
-                                            <address>
-                                                081999288388
-
-                                            </address>
+                                            <div class="">{{ $order->address?->phone_number }}</div>
                                         </div>
 
                                     </div>

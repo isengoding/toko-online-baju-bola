@@ -12,6 +12,7 @@ class Order extends Model
     protected $fillable = [
         'no_order',
         'user_id',
+        'address_id',
         'total',
         'invoice_id',
         'checkout_url',
@@ -28,5 +29,10 @@ class Order extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function address()
+    {
+        return $this->belongsTo(Address::class);
     }
 }

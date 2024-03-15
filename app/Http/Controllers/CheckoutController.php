@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Xendit\Xendit;
+use App\Models\Address;
 use Xendit\Configuration;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -19,7 +20,9 @@ class CheckoutController extends Controller
     {
         $carts = \Cart::session(100)->getContent()->sortBy('id');
 
-        return view('pages.user.checkout.index', compact('carts'));
+        $address = Address::where('user_id', auth()->user()->id)->where('is_default', '1')->first();
+
+        return view('pages.user.checkout.index', compact('carts', 'address'));
     }
 
 

@@ -4,6 +4,7 @@ namespace App\Services;
 
 use Cart;
 use App\Models\Order;
+use App\Models\Address;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
@@ -36,6 +37,8 @@ class OrderService
      */
     public function createInvoice()
     {
+        $address = Address::where('user_id', auth()->user()->id)->where('is_default', '1')->first();
+
         $data = [
             'external_id' => "INV/" . date('dmY') . "/" . time(),
             // 'description' => 'harusa ada description?',
@@ -45,19 +48,19 @@ class OrderService
             'reminder_time' => 1,
             'success_redirect_url' => 'localhost:8000',
             'customer' => [
-                "given_names" => "John",
-                "surname" => "Doe",
-                "email" => "johndoe@example.com",
-                "mobile_number" => "+6287774441111",
+                "given_names" => $address->recipient_name,
+                "surname" => $address->recipient_name,
+                "email" => auth()->user()->email,
+                "mobile_number" => $address->phone_number,
                 "addresses" => [
                     [
 
-                        "city" => "Jakarta Selatan",
+                        "city" => "nan",
                         "country" => "Indonesia",
-                        "postal_code" => "12345",
-                        "state" => "Daerah Khusus Ibukota Jakarta",
-                        "street_line1" => "Jalan Makan",
-                        "street_line2" => "Kecamatan Kebayoran Baru"
+                        "postal_code" => "nan",
+                        "state" => "nan",
+                        "street_line1" => $address->street_address,
+                        "street_line2" => $address->notes,
                     ]
 
                 ]
@@ -109,12 +112,14 @@ class OrderService
     {
 
         $result = $this->createInvoice();
+        $address = Address::where('user_id', auth()->user()->id)->where('is_default', '1')->first();
 
         try {
             DB::beginTransaction();
 
             $order = Order::create([
                 'user_id' => auth()->user()->id,
+                'address_id' => $address->id,
                 'no_order' => $result['external_id'],
                 'invoice_id' => $result['id'],
                 'checkout_url' => $result['invoice_url'],

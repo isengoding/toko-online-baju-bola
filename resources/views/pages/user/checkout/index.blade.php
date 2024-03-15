@@ -29,24 +29,25 @@
                         @if ($carts->count() > 0)
                             <div class="col-6">
                                 <div class="row mt-4 mb-4">
-                                    <div class="col">
-                                        <div class="fs-3 mb-3">Informasi Saya</div>
+                                    <div class="col-md-6">
+                                        <div class="fw-bold">Nama Penerima</div>
+                                        <div class="mb-3">{{ $address->recipient_name }}</div>
                                         <div class="fw-bold">Alamat Pengiriman</div>
                                         <div class="mb-3">
-                                            Jhon Doe <br>
-                                            Jl. Merdeka Selatan No 11
-                                            <br>
-                                            Jakarta Selatan
-                                            <br>
-                                            123456
-                                            <br>
-                                            Indonesia
+                                            {{ $address->street_address }}
+
                                         </div>
                                         <div class="fw-bold">Nomor Telepon</div>
-                                        <div class="">081999288388</div>
+                                        <div class="">{{ $address->phone_number }}</div>
 
 
 
+                                    </div>
+                                    <div class="col-md-6 text-end">
+                                        <a href="{{ route('user.addresses.edit', $address->id) }}" target="_blank"
+                                            class="text-decoration-none">
+                                            <i class="ti ti-edit icon text-secondary me-2"></i>
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="fw-bold">Detail Pesanan</div>

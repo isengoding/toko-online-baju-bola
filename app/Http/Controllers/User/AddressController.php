@@ -72,9 +72,14 @@ class AddressController extends Controller
     {
         if ($request->is_default) {
             Address::where('user_id', auth()->id())->update(['is_default' => 0]);
+
+            $address->update(['is_default' => 0]);
+
+            $address->update(['is_default' => 1]);
         }
 
-        $address->update($request->validated());
+        $address->update($request->except('is_default'));
+
 
         $request->session()->flash('success', 'Address updated successfully');
 
