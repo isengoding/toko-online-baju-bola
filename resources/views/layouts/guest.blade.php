@@ -155,6 +155,7 @@
 
                                     <a href="{{ route('admin.dashboard') }}" class="dropdown-item">Dashboard</a>
                                     <a href="{{ route('user.profile.edit') }}" class="dropdown-item">Profile</a>
+                                    <a href="{{ route('user.password.edit') }}" class="dropdown-item">Change Password</a>
                                     <a href="{{ route('user.addresses.index') }}" class="dropdown-item">Address</a>
                                     <a href="{{ route('user.orders.index') }}" class="dropdown-item">My Order</a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"

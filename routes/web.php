@@ -12,6 +12,7 @@ use App\Http\Controllers\User\AddressController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\User\ChangePasswordController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
 
 /*
@@ -74,6 +75,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/addresses/setdefault/{address}', [AddressController::class, 'setDefault'])->name('user.addresses.setdefault');
 
     Route::get('/profile', ProfileController::class)->name('user.profile.edit');
+    Route::get('/change-password', ChangePasswordController::class)->name('user.password.edit');
 
 
 });
