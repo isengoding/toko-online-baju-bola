@@ -39,6 +39,22 @@ class Product extends Model
                 });
         });
 
+        $query->when($filters['type'] ?? null, function ($query, $type) {
+            $query->where('type', $type);
+        });
+
+        $query->when($filters['brand_id'] ?? null, function ($query, $brand_id) {
+            $query->whereHas('brand', function ($query) use ($brand_id) {
+                $query->where('id', $brand_id);
+            });
+        });
+
+        $query->when($filters['team_id'] ?? null, function ($query, $team_id) {
+            $query->whereHas('team', function ($query) use ($team_id) {
+                $query->where('id', $team_id);
+            });
+        });
+
     }
 
     /**
