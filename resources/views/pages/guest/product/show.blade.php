@@ -26,10 +26,10 @@
             <div class="page-body">
                 <div class="container-xl">
                     <div class="row g-4">
-                        <div class="col-6">
+                        <div class="col-md-6">
                             <img src="{{ asset('assets/img/product/' . $product->image) }}" alt="">
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <form action="{{ route('guest.cart.store') }}" method="post">
                                 @csrf
                                 <div class="fs-3">{{ $product->name }}</div>
