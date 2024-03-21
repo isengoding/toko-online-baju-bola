@@ -199,15 +199,17 @@
                 @foreach ($popularProducts as $item)
                     <div class="col-sm-6 col-lg-3">
                         <div class="card card-sm my-3">
-                            <a href="#" class="d-block"><img alt="jersey" height="350"
-                                    src="{{ asset('assets/img/product/' . $item->image) }}" class="card-img-top"></a>
+                            <a href="{{ route('guest.products.show', $item->id) }}" class="d-block"><img alt="jersey"
+                                    height="350" src="{{ asset('assets/img/product/' . $item->image) }}"
+                                    class="card-img-top"></a>
                             <div class="card-body">
                                 <div class="d-flex align-items-center">
                                     {{-- <span class="avatar me-3 rounded"
                                     style="background-image: url({{ asset('dist/img/products/acmilan.jpg') }})"></span> --}}
                                     <div>
                                         <div>
-                                            <a href="{{ route('detail') }}" class="text-reset">{{ $item->name }} -
+                                            <a href="{{ route('guest.products.show', $item->id) }}"
+                                                class="text-reset">{{ $item->name }} -
                                                 {{ $item->type }}</a>
                                         </div>
                                         <div class="text-secondary">Rp. {{ number_format($item->price) }}</div>
