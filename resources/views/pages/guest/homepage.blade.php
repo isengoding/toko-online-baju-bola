@@ -9,7 +9,7 @@
     <div class="page page-center">
         <div class="container container-normal py-4">
             <div class="row row-deck row-cards">
-                <div class="col-3">
+                <div class="col-md-3 d-none d-md-block">
                     <div id="carousel-indicators" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#carousel-indicators" data-bs-slide-to="0"
@@ -61,7 +61,7 @@
                     </div>
 
                 </div>
-                <div class="col-9">
+                <div class="col-md-9">
                     <div class="card card-md">
                         {{-- <div class="card-stamp card-stamp-lg">
                             <div class="card-stamp-icon bg-primary">
@@ -90,54 +90,72 @@
                                 </div>
                             </div>
                             <div class="mt-5 d-flex justify-content-center text-center">
-                                <a href="{{ route('guest.products.index') }}" class="btn btn-primary w-25"
-                                    rel="noopener">Belanja
+                                <a href="{{ route('guest.products.index') }}" class="btn btn-primary" rel="noopener">Belanja
                                     Sekarang</a>
                             </div>
-                            <div class="mt-5 d-flex justify-content-center text-center">
-                                {{-- @for ($i = 0; $i < 4; $i++) --}}
-                                <div class="d-flex flex-column align-items-center m-2">
-                                    <img src="{{ asset('dist/img/products/league/Champions League.png') }}" width="50"
-                                        class=" m-2" alt="...">
-                                    <span>Champion League</span>
+                            <div class="row justify-content-center mt-5">
+                                <div class="col-md-1 col-3">
+                                    <div class="d-flex flex-column align-items-center m-2">
+                                        <img src="{{ asset('dist/img/products/league/Champions League.png') }}"
+                                            width="50" class=" m-2" alt="...">
+                                        <span>Champion League</span>
+                                    </div>
                                 </div>
-                                <div class="d-flex flex-column align-items-center m-2">
-                                    <img src="{{ asset('dist/img/products/league/Europa League.png') }}" width="50"
-                                        class=" m-2" alt="...">
-                                    <span>Europa League</span>
+                                <div class="col-md-1 col-3">
+                                    <div class="d-flex flex-column align-items-center m-2">
+                                        <img src="{{ asset('dist/img/products/league/Europa League.png') }}" width="50"
+                                            class=" m-2" alt="...">
+                                        <span>Europa League</span>
+                                    </div>
                                 </div>
-                                <div class="d-flex flex-column align-items-center m-2">
-                                    <img src="{{ asset('dist/img/products/league/Bundesliga.png') }}" width="50"
-                                        class=" m-2" alt="...">
-                                    <span>Bundesliga</span>
+                                <div class="col-md-1 col-3">
+                                    <div class="d-flex flex-column align-items-center m-2">
+                                        <img src="{{ asset('dist/img/products/league/Bundesliga.png') }}" width="50"
+                                            class=" m-2" alt="...">
+                                        <span>Bundesliga</span>
+                                    </div>
                                 </div>
-                                <div class="d-flex flex-column align-items-center m-2">
-                                    <img src="{{ asset('dist/img/products/league/La Liga.png') }}" width="50"
-                                        class=" m-2" alt="...">
-                                    <span>La Liga</span>
+                                <div class="col-md-1 col-3">
+                                    <div class="d-flex flex-column align-items-center m-2">
+                                        <img src="{{ asset('dist/img/products/league/La Liga.png') }}" width="50"
+                                            class=" m-2" alt="...">
+                                        <span class="text-nowrap">La Liga</span>
+                                    </div>
                                 </div>
-                                <div class="d-flex flex-column align-items-center m-2">
-                                    <img src="{{ asset('dist/img/products/league/Ligue 1.png') }}" width="50"
-                                        class=" m-2" alt="...">
-                                    <span>Ligue 1</span>
+
+                                <div class="col-md-1 col-3">
+                                    <div class="d-flex flex-column align-items-center m-2">
+                                        <img src="{{ asset('dist/img/products/league/Ligue 1.png') }}" width="50"
+                                            class=" m-2" alt="...">
+                                        <span class="text-nowrap">Ligue 1</span>
+                                    </div>
                                 </div>
-                                <div class="d-flex flex-column align-items-center m-2">
-                                    <img src="{{ asset('dist/img/products/league/Premier League.png') }}" width="50"
-                                        class=" m-2" alt="...">
-                                    <span>Premier League</span>
+                                <div class="col-md-1 col-3">
+                                    <div class="d-flex flex-column align-items-center m-2">
+                                        <img src="{{ asset('dist/img/products/league/Premier League.png') }}" width="50"
+                                            class=" m-2" alt="...">
+                                        <span>Premier League</span>
+                                    </div>
                                 </div>
-                                <div class="d-flex flex-column align-items-center m-2">
-                                    <img src="{{ asset('dist/img/products/league/Serie A.png') }}" width="50"
-                                        class=" m-2" alt="...">
-                                    <span>Serie A</span>
+                                <div class="col-md-1 col-3">
+                                    <div class="d-flex flex-column align-items-center m-2">
+                                        <img src="{{ asset('dist/img/products/league/Serie A.png') }}" width="50"
+                                            class=" m-2" alt="...">
+                                        <span>Serie A</span>
+                                    </div>
                                 </div>
-                                <div class="d-flex flex-column align-items-center m-2">
-                                    <img src="{{ asset('dist/img/products/league/World Cup.png') }}" width="50"
-                                        class=" m-2" alt="...">
-                                    <span>World Cup</span>
+                                <div class="col-md-1 col-3">
+                                    <div class="d-flex flex-column align-items-center m-2">
+                                        <img src="{{ asset('dist/img/products/league/World Cup.png') }}" width="50"
+                                            class=" m-2" alt="...">
+                                        <span>World Cup</span>
+                                    </div>
                                 </div>
-                                {{-- @endfor --}}
+                                {{-- <div class="col-md-1">
+
+                                </div> --}}
                             </div>
+
 
                         </div>
                     </div>
