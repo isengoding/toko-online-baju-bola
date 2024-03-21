@@ -95,23 +95,37 @@
                                             </td>
 
                                             <td class="align-text-top" data-label="Tanggal order">
-                                                {{ $row->created_at }}
+                                                {{ \Carbon\Carbon::parse($row->created_at)->format('d F Y H:i') }}
                                             </td>
-                                            <td class="align-text-top" data-label="Total">
-                                                {{ $row->total }}
+                                            <td class="align-text-top text-nowrap" data-label="Total">
+                                                Rp. {{ number_format($row->total) }}
                                             </td>
                                             <td class="align-text-top" data-label="Status Payment">
-                                                {{ $row->status_payment }}
+                                                @if ($row->status_payment == 'PAID')
+                                                    <span class="badge bg-green text-green-fg">
+                                                        {{ $row->status_payment }}
+                                                    </span>
+                                                @endif
+                                                @if ($row->status_payment == 'PENDING')
+                                                    <span class="badge bg-purple text-purple-fg">
+                                                        {{ $row->status_payment }}
+                                                    </span>
+                                                @endif
+                                                @if ($row->status_payment == 'EXPIRED')
+                                                    <span class="badge bg-orange text-orange-fg">
+                                                        {{ $row->status_payment }}
+                                                    </span>
+                                                @endif
                                             </td>
 
 
                                             <td class="align-text-top">
-                                                <a href="#" class="link-underline link-underline-opacity-0"
+                                                {{-- <a href="#" class="link-underline link-underline-opacity-0"
                                                     data-bs-toggle="dropdown" aria-expanded="false">
                                                     <i class="ti ti-dots icon"></i>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-end" style="">
-                                                    {{-- <a class="dropdown-item" href="{{ route('orders.edit', $row->id) }}">
+                                                    <a class="dropdown-item" href="{{ route('orders.edit', $row->id) }}">
                                                         <i class="ti ti-edit icon text-secondary me-2"></i>
                                                         Edit
                                                     </a>
@@ -119,8 +133,8 @@
                                                         onclick="handleDelete(`{{ route('orders.destroy', $row->id) }}`)">
                                                         <i class="ti ti-trash icon me-2 opacity-50"></i>
                                                         Delete
-                                                    </a> --}}
-                                                </div>
+                                                    </a>
+                                                </div> --}}
 
                                             </td>
                                         </tr>
