@@ -27,7 +27,7 @@
                 <div class="container-xl">
                     <div class="row g-5">
                         @if ($carts->count() > 0)
-                            <div class="col-6">
+                            <div class="col-md-6">
                                 <div class="row mt-4 mb-4">
                                     <div class="col-md-6">
                                         <div class="fw-bold">Nama Penerima</div>
@@ -82,7 +82,7 @@
                                 @empty
                                 @endforelse
                             </div>
-                            <div class="col-4">
+                            <div class="col-md-4">
                                 <div class="card sticky-top border-0">
                                     <div class="card-body bg-transparent">
                                         <div class="d-flex justify-content-between text-secondary mb-1">
