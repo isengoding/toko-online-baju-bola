@@ -145,22 +145,22 @@
                                             <div>
                                                 <label class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio" name="type"
-                                                        value="away">
+                                                        value="away" @checked(old('type') == 'away')>
                                                     <span class="form-check-label">Away</span>
                                                 </label>
                                                 <label class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio" name="type"
-                                                        value="home">
+                                                        value="home" @checked(old('type') == 'home')>
                                                     <span class="form-check-label">Home</span>
                                                 </label>
                                                 <label class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio" name="type"
-                                                        value="third">
+                                                        value="third" @checked(old('type') == 'third')>
                                                     <span class="form-check-label">Third</span>
                                                 </label>
                                                 <label class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio" name="type"
-                                                        value="gk">
+                                                        value="gk" @checked(old('type') == 'gk')>
                                                     <span class="form-check-label">GK</span>
                                                 </label>
                                             </div>

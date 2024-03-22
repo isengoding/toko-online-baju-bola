@@ -35,6 +35,7 @@ class StoreUserRequest extends FormRequest
                 'max:255',
                 Rule::unique(User::class),
             ],
+            'role' => 'required',
             'password' => $this->passwordRules(),
         ];
     }

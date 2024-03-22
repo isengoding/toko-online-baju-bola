@@ -94,10 +94,20 @@
                         </span>
                     </a>
                 </li>
+                <li class="nav-item @if (request()->routeIs('users.*')) active @endif">
+                    <a class="nav-link" href="{{ route('users.index') }}">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <i class="ti ti-users icon"></i>
+                        </span>
+                        <span class="nav-link-title">
+                            User
+                        </span>
+                    </a>
+                </li>
                 <li class="nav-item @if (request()->routeIs('products.*')) active @endif">
                     <a class="nav-link" href="{{ route('products.index') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <i class="ti ti-notebook icon"></i>
+                            <i class="ti ti-shirt-sport icon"></i>
                         </span>
                         <span class="nav-link-title">
                             Product
@@ -107,7 +117,7 @@
                 <li class="nav-item @if (request()->routeIs('brands.*')) active @endif">
                     <a class="nav-link" href="{{ route('brands.index') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <i class="ti ti-notebook icon"></i>
+                            <i class="ti ti-tag-starred icon"></i>
                         </span>
                         <span class="nav-link-title">
                             Brand
@@ -117,7 +127,7 @@
                 <li class="nav-item @if (request()->routeIs('teams.*')) active @endif">
                     <a class="nav-link" href="{{ route('teams.index') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <i class="ti ti-notebook icon"></i>
+                            <i class="ti ti-soccer-field icon"></i>
                         </span>
                         <span class="nav-link-title">
                             Team
@@ -127,7 +137,7 @@
                 <li class="nav-item @if (request()->routeIs('stocks.*')) active @endif">
                     <a class="nav-link" href="{{ route('stocks.index') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <i class="ti ti-notebook icon"></i>
+                            <i class="ti ti-cube-unfolded icon"></i>
                         </span>
                         <span class="nav-link-title">
                             Stock

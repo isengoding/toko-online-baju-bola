@@ -9,8 +9,6 @@ use App\Actions\Fortify\PasswordValidationRules;
 
 class UpdateUserRequest extends FormRequest
 {
-    use PasswordValidationRules;
-
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -35,7 +33,12 @@ class UpdateUserRequest extends FormRequest
                 'max:255',
                 Rule::unique(User::class)->ignore($this->user),
             ],
-            'password' => $this->passwordRules(),
+            'password' => [
+                'nullable',
+                'string',
+                'min:8',
+                'confirmed'
+            ],
         ];
     }
 }
