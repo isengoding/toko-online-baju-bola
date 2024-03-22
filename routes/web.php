@@ -5,6 +5,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Admin\TeamController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Guest\HomeController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\StockController;
@@ -51,6 +52,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::resource('teams', TeamController::class);
     Route::resource('products', ProductController::class);
     Route::resource('stocks', StockController::class);
+    Route::resource('users', UserController::class);
 
 });
 

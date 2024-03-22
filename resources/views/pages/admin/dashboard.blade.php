@@ -48,7 +48,7 @@
                                         </div>
                                         <div class="col">
                                             <div class="font-weight-medium">
-                                                132
+                                                {{ $totalProduct }}
                                             </div>
                                             <div class="text-secondary">
                                                 Products
@@ -79,7 +79,7 @@
                                         </div>
                                         <div class="col">
                                             <div class="font-weight-medium">
-                                                78
+                                                {{ $totalBrand }}
                                             </div>
                                             <div class="text-secondary">
                                                 Brands
@@ -108,10 +108,10 @@
                                         </div>
                                         <div class="col">
                                             <div class="font-weight-medium">
-                                                623
+                                                {{ $totalTeam }}
                                             </div>
                                             <div class="text-secondary">
-                                                Categories
+                                                Team
                                             </div>
                                         </div>
                                     </div>
@@ -137,10 +137,10 @@
                                         </div>
                                         <div class="col">
                                             <div class="font-weight-medium">
-                                                132
+                                                {{ $totalOrder }}
                                             </div>
                                             <div class="text-secondary">
-                                                Users
+                                                Order
                                             </div>
                                         </div>
                                     </div>

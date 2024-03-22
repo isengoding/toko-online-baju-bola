@@ -202,7 +202,8 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <a href="{{ route('brands.index') }}" class="btn btn-outline-secondary w-25 ">Cancel</a>
+                                <a href="{{ route('products.index') }}"
+                                    class="btn btn-outline-secondary w-25 ">Cancel</a>
                                 <button type="submit" class="btn btn-primary ms-3 w-25 ">Save</button>
                             </div>
                         </form>
