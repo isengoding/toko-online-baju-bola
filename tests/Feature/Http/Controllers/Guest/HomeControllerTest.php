@@ -2,9 +2,10 @@
 
 namespace Tests\Feature\Http\Controllers\Guest;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Models\Product;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class HomeControllerTest extends TestCase
 {
@@ -22,6 +23,7 @@ class HomeControllerTest extends TestCase
      */
     public function can_render_home_page()
     {
+        Product::factory()->count(5)->create();
 
         $response = $this->get('/');
 

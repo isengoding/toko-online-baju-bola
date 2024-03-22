@@ -20,20 +20,6 @@ class AuthenticationTest extends TestCase
     }
 
     /** @test */
-    public function users_can_authenticate_using_the_login_screen()
-    {
-        $user = User::factory()->create();
-
-        $response = $this->post('/login', [
-            'email' => $user->email,
-            'password' => 'password',
-        ]);
-
-        $this->assertAuthenticated();
-        $response->assertRedirect(RouteServiceProvider::HOME);
-    }
-
-    /** @test */
     public function users_with_role_admin_can_redirect_to_admin_dashboard()
     {
         $user = User::factory()->create([

@@ -38,7 +38,7 @@ class OrderService
     public function createInvoice()
     {
         $address = Address::where('user_id', auth()->user()->id)->where('is_default', '1')->first();
-
+        // dd($address->recipient_name);
         $data = [
             'external_id' => "INV/" . date('dmY') . "/" . time(),
             // 'description' => 'harusa ada description?',

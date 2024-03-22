@@ -7,6 +7,7 @@ use Tests\TestCase;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Stock;
+use App\Models\Address;
 use App\Models\Product;
 use Xendit\Configuration;
 use Mockery\MockInterface;
@@ -25,7 +26,17 @@ class OrderControllerTest extends TestCase
         parent::setUp();
 
         // Create a user instance for the tests
-        $user = User::factory()->create();
+        $user = User::factory()
+            ->create();
+
+        $user->addresses()->create([
+            'label' => 'Home',
+            'recipient_name' => 'test name',
+            'street_address' => 'example address',
+            'phone_number' => '123123123',
+            'notes' => 'not set',
+            'is_default' => true
+        ]);
 
         $this->actingAs($user);
 
@@ -102,6 +113,7 @@ class OrderControllerTest extends TestCase
         $existingOrder = Order::factory()->create([
             'user_id' => auth()->user()->id,
             'status_payment' => 'PENDING',
+            'address_id' => 1,
         ]);
 
         Http::fake([

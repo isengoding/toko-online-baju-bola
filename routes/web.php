@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\ImageController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\UserController;
@@ -37,12 +36,6 @@ Route::get('/combo', function () {
 Route::get('/guest', function () {
     return view('layouts.guest');
 });
-
-// Route::get('/products', [ProductController::class, 'index']);
-// Route::get('/products', [ProductController::class, 'index']);
-
-Route::post('upload', [ImageController::class, 'upload'])->name('images.upload');
-Route::delete('revert', [ImageController::class, 'revert'])->name('images.revert');
 
 // Admin Route
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
@@ -94,22 +87,6 @@ Route::get('/cart/{id}', [CartController::class, 'destroy'])->name('guest.cart.d
 
 Route::post('/webhook', [App\Http\Controllers\User\OrderController::class, 'webhook'])->name('user.orders.webhook');
 
-
-
-
-Route::middleware(['auth'])->group(function () {
-    // Route::get('/', function () {
-    //     return view('dashboard');
-    // })->name('dashboard');
-
-    Route::resource('images', ImageController::class);
-
-    // Route::get('/products/import/create', [ProductController::class, 'importCreate'])->name('products.import.create');
-    // Route::post('/products/import', [ProductController::class, 'importStore'])->name('products.import.store');
-    // Route::get('/products/excel', [ProductController::class, 'excel'])->name('products.excel');
-    // Route::get('/products/pdf', [ProductController::class, 'pdf'])->name('products.pdf');
-    // Route::resource('products', ProductController::class);
-});
 
 
 Route::prefix('prototype')->group(function () {
