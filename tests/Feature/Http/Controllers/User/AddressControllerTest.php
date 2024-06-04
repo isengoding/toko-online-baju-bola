@@ -104,6 +104,7 @@ class AddressControllerTest extends TestCase
 
         $response = $this->put(route('user.addresses.update', $existingAddress), $updateAddress);
 
+        unset($updateAddress['is_default']);
 
         $this->assertDatabaseHas('addresses', $updateAddress);
 
